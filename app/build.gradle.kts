@@ -80,5 +80,7 @@ dependencies {
     // Accompanist Navigation Animation (animações)
     implementation(libs.accompanist.navigation.animation)
 
+    // DataStore (session management)
+    implementation(libs.androidx.datastore.preferences)
 
 }

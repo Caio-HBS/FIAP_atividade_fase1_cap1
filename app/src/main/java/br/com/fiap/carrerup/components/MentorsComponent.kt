@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.com.fiap.carrerup.R
 import br.com.fiap.carrerup.model.User
+import br.com.fiap.carrerup.ui.theme.SandBlue
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.google.gson.Gson
@@ -38,14 +39,17 @@ fun Mentors(res: User, controller: NavHostController, area: String) {
             .fillMaxWidth()
             .padding(5.dp),
         elevation = CardDefaults.elevatedCardElevation(8.dp),
+        colors = CardDefaults.cardColors(SandBlue),
         onClick = {
             val gson = Gson()
 
             val json = Uri.encode(gson.toJson(res))
+
             controller.navigate("singleProfile/$area/$json")
         }
     ) {
         Row(
+            modifier = Modifier.padding(5.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
@@ -66,7 +70,7 @@ fun Mentors(res: User, controller: NavHostController, area: String) {
             Column(
                 modifier = Modifier.fillMaxWidth(),
 
-            ) {
+                ) {
                 Text(
                     text = "${res.name.first + " " + res.name.last}, ${res.dob.age}".uppercase(),
                     fontSize = 25.sp,
